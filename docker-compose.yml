@@ -72,3 +72,11 @@ services:
   #   image: redis:latest
   #   ports:
   #     - "127.0.0.1:${HOST_MACHINE_REDIS_PORT}:6379"
+
+  composer:
+    image: composer:latest
+    container_name: "${COMPOSE_PROJECT_NAME}-composer"
+    working_dir: /var/www/html
+    volumes:
+      - ${DOCUMENT_ROOT-./www}:/var/www/html
+    entrypoint: ["composer"]
