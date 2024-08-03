@@ -54,8 +54,8 @@ services:
     environment:
       PMA_HOST: database
       PMA_PORT: 3306
-      PMA_USER: docker
-      PMA_PASSWORD: docker
+      PMA_USER: root
+      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
@@ -76,7 +76,7 @@ services:
   composer:
     image: composer:latest
     container_name: "${COMPOSE_PROJECT_NAME}-composer"
-    working_dir: /var/www/html
-    volumes:
-      - ${DOCUMENT_ROOT-./www}:/var/www/html
-    entrypoint: ["composer"]
+    # working_dir: /var/www/html
+    # volumes:
+    #   - ${DOCUMENT_ROOT-./www}:/var/www/html
+    # entrypoint: ["composer"]
